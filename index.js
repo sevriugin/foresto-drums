@@ -1,7 +1,16 @@
 const buttons = document.querySelectorAll(".drum");
 console.log(buttons);
 
-
+/**
+ * Sound object with key - sound mapping.
+ * There are two options to access the object property:
+ *  Option 1 - dot notation: drums.w
+ *  Option 2 - bracket notation: drums["w"] (like index for an array),
+ *  The option 2 is more flexible because we can use a variable, like soundKey:
+ *      const sound = drums[soundKey.toLowerCase()];
+ *      Here we convert the soundKey to lowercase, because the keys in the drums object are lowercase and use the value to get a sound.
+ * @type {{w: HTMLAudioElement, a: HTMLAudioElement, s: HTMLAudioElement, d: HTMLAudioElement, j: HTMLAudioElement, k: HTMLAudioElement, l: HTMLAudioElement}}
+ */
 const drums = {
     w: new Audio("/sounds/crash.mp3"),
     a: new Audio("/sounds/kick-bass.mp3"),
@@ -10,7 +19,7 @@ const drums = {
     j: new Audio("/sounds/tom-2.mp3"),
     k: new Audio("/sounds/tom-3.mp3"),
     l: new Audio("/sounds/tom-4.mp3"),
-}
+};
 
 /**
  * We need for loop to get a button from a button array, and we can use 3 options here:
