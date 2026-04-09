@@ -1,6 +1,17 @@
 const buttons = document.querySelectorAll(".drum");
 console.log(buttons);
 
+
+const drums = {
+    w: new Audio("/sounds/crash.mp3"),
+    a: new Audio("/sounds/kick-bass.mp3"),
+    s: new Audio("/sounds/snare.mp3"),
+    d: new Audio("/sounds/tom-1.mp3"),
+    j: new Audio("/sounds/tom-2.mp3"),
+    k: new Audio("/sounds/tom-3.mp3"),
+    l: new Audio("/sounds/tom-4.mp3"),
+}
+
 /**
  * We need for loop to get a button from a button array, and we can use 3 options here:
  * (1) `for` loop with index
@@ -33,39 +44,10 @@ console.log(buttons);
  * @param soundKey Key of the sound that we want to play.
  */
 function playSound(soundKey) {
-    switch (soundKey) {
-        case "w":
-            const crash = new Audio("/sounds/crash.mp3");
-            crash.play();
-            break;
-        case "a":
-            const kick = new Audio("/sounds/kick-bass.mp3");
-            kick.play();
-            break;
-        case "s":
-            const snare = new Audio("/sounds/snare.mp3");
-            snare.play();
-            break;
-        case "d":
-            const tom1 = new Audio("/sounds/tom-1.mp3");
-            tom1.play();
-            break;
-        case "j":
-            const tom2 = new Audio("/sounds/tom-2.mp3");
-            tom2.play();
-            break;
-        case "k":
-            const tom3 = new Audio("/sounds/tom-3.mp3");
-            tom3.play();
-            break;
-        case "l":
-            const tom4 = new Audio("/sounds/tom-4.mp3");
-            tom4.play();
-            break;
-        default:
-            console.log(soundKey);
+    const sound = drums[soundKey.toLowerCase()];
+    if (sound) {
+        sound.play();
     }
-
 }
 
 /**
