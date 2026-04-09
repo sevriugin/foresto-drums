@@ -54,6 +54,9 @@ const drums = {
  */
 function playSound(soundKey) {
     const sound = drums[soundKey.toLowerCase()];
+    /**
+     * we need to check if the sound is defined, because we can't play a sound that is not defined.'
+     */
     if (sound) {
         sound.play();
     }
