@@ -6,7 +6,7 @@ console.log(buttons);
  * There are two options to access the object property:
  *  Option 1 - dot notation: drums.w
  *  Option 2 - bracket notation: drums["w"] (like index for an array),
- *  The option 2 is more flexible because we can use a variable, like soundKey:
+ *  The Option 2 is more flexible because we can use a variable, like soundKey:
  *      const sound = drums[soundKey.toLowerCase()];
  *      Here we convert the soundKey to lowercase, because the keys in the drums object are lowercase and use the value to get a sound.
  * @type {{w: HTMLAudioElement, a: HTMLAudioElement, s: HTMLAudioElement, d: HTMLAudioElement, j: HTMLAudioElement, k: HTMLAudioElement, l: HTMLAudioElement}}
@@ -19,6 +19,15 @@ const drums = {
     j: new Audio("/sounds/tom-2.mp3"),
     k: new Audio("/sounds/tom-3.mp3"),
     l: new Audio("/sounds/tom-4.mp3"),
+};
+const drumButtons = {
+    w: document.querySelector(".w"),
+    a: document.querySelector(".a"),
+    s: document.querySelector(".s"),
+    d: document.querySelector(".d"),
+    j: document.querySelector(".j"),
+    k: document.querySelector(".k"),
+    l: document.querySelector(".l"),
 };
 
 /**
@@ -62,6 +71,13 @@ function playSound(soundKey) {
     }
 }
 
+
+function buttonAnimation(button) {
+    button.classList.add('pressed');
+    setTimeout(() => {
+        button.classList.remove('pressed');
+    }, 100);
+}
 /**
  * Setting up event listeners for all buttons. We are using Option 1 here.
  */
@@ -70,6 +86,7 @@ for (let i = 0; i < numberOfButtons; i++) {
     buttons[i].addEventListener("click", function () {
         const innerHtml = this.innerText;
         playSound(innerHtml);
+        buttonAnimation(buttons[i]);
     })
 
 }
@@ -78,6 +95,8 @@ for (let i = 0; i < numberOfButtons; i++) {
  */
 document.addEventListener("keypress", function (event) {
     playSound(event.key);
+    buttonAnimation(drumButtons[event.key]);
 });
+
 
 
